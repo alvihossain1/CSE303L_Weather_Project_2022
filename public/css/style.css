@@ -1,0 +1,295 @@
+/* BASE CSS */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	
+}
+
+
+body{
+	background-color: black;
+}
+
+:root{
+	/* --lightnut: rgba(231, 214, 193, 0.808); */
+	/* --color: rgb(126,39,39); */
+	/* --footerbackground: rgb(126,39,39); */
+	--color: rgb(29, 177, 170);
+	--fontcolor: rgb(255, 250, 244);	
+	--footerbackground: var(--color);
+}
+
+
+.mainpage{
+    min-height: 100vh;
+	width: 100%;
+	background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../images/background.jpg) fixed;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+#preloader{
+	background: black url(../images/preloading.gif) no-repeat center;
+	position: fixed;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 90vh;
+	width: 100%;	
+	z-index: 50;
+}
+
+nav{
+	min-height: 10vh;
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+	opacity: 0.9;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+}
+
+.smallnavlogo{
+	height: 6vh;
+	width: 100%;
+	opacity: 0.9;
+	background-color: rgba(0,0,0,0.5);
+	list-style-type: none;
+	display: none;
+	box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+	outline: none;
+}
+
+.smallnavlogo li a{
+	color: rgba(255, 255, 255, 0.897);
+	padding: 7px 20px;
+	font-size: 20px;
+	margin: 0;
+	border-left: 1px solid rgba(255, 255, 255, 0.1);
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#headingAnchor{
+	text-decoration: none;
+}
+
+.headingbox{
+	margin-left: 100px;
+	color: var(--fontcolor);
+	font-size: 25px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.headingbox .logo{
+	height:70px;
+	opacity: 0.6;
+	border-radius: 10px;
+	margin-right: 15px;
+}
+
+.headingbox span{
+	color: var(--color);
+}
+
+.navbarlist{
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.navbarlist li{
+	list-style-type: none;
+	margin: 0;
+}
+
+.navbarlist li a{
+	color: var(--fontcolor);
+	font-size: 25px;
+	text-decoration: none;
+	padding: 22px 25px;
+	border-left: 1px solid rgba(71, 71, 71, 0.815);
+	border-right: 1px solid rgba(71, 71, 71, 0.815);
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.navbarlist li a:hover{
+	background-color: var(--color);
+	color: black;
+	border-left: 1px solid var(--color);
+	border-right: 1px solid var(--color);
+}
+
+.menubar{	
+	margin-left: 200px;
+	margin-right: 100px;	
+	color: var(--fontcolor);
+	font-size: 2em;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.menubar:hover{
+	color: var(--color);
+	transform: scale(1.4);
+}
+
+.sidebar{
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	width: 0px;
+	height: 100vh;
+	opacity: 0.9;
+	overflow-y: scroll;
+	background-color: black;
+	transition: 0.6s;
+	box-shadow: 20px 20px 100px black;
+}
+
+.sidebar::-webkit-scrollbar{
+	width: 0px;
+}
+
+
+.closeicon{
+	float: left;
+	color: var(--fontcolor);
+	font-size: 2.5em;
+	cursor: pointer;
+	margin-left: 30px;
+	margin-top: 30px;
+	transition: 0.2s;
+}
+
+.closeicon:hover{
+	color: var(--color);
+	transform: scale(1.4);
+}
+
+.list-heading{
+	margin: 0 auto;
+	color: var(--fontcolor);
+	text-align: center;
+	width: auto;
+	margin-top: 100px;
+	font-size: 32px;
+	font-weight: normal;
+	overflow: hidden;
+}
+
+.sidebarlist{	
+	margin: 10px 15px;
+	overflow: hidden;
+}
+
+.sidebarlist li{
+	list-style-type: none;
+	margin: 0;
+	transition: 0.6s;
+}
+
+.sidebarlist li a{
+	display: block;
+	text-decoration: none;
+	color: var(--fontcolor);
+	font-size: 22px;
+	transition: 0.6s;
+	padding: 7px 10px;
+}
+
+.sidebarlist li:hover{
+	padding-left: 15px;
+	background-color: var(--color);
+}
+
+.sidebarlist li:hover a{
+	color: var(--fontcolor);
+}
+
+.nextpage{
+	min-height: 100vh;
+	width: 100%;
+	background-color: rgb(34, 33, 33);
+	position: relative;
+}
+
+/* Scroll Bar Design */
+::-webkit-scrollbar{
+	width: 15px;
+}
+
+::-webkit-scrollbar-track{
+	background-color: rgb(0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: rgba(231, 214, 193, 0.808);
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background-color: var(--color);
+	/* background-color: rgba(169, 43, 173, 0.664); */
+}
+/* Scroll Bar Design End */
+
+
+/* FOOTER  */
+.myfooter{
+	background-color: var(--footerbackground);
+	min-height: 25vh;
+	width: 100%;
+	padding: 50px 0;
+	color: var(--fontcolor);
+	font-size: 25px;
+	font-weight: bold;
+	overflow: hidden;
+	text-align: center;
+}
+
+.myfooter .footerdetails{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.myfooter .footerdetails p{
+	margin: 0;
+	padding: 0;
+}
+
+/* PAGE SECTION */
+
+.section{
+	min-height: 100vh;
+	background-color: rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 30px black;
+	width: 90%;
+	margin: 0 auto;
+	padding: 10px;
+	
+}
+
+.section .content{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	
+}
+
+
+

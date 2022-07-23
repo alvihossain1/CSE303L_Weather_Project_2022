@@ -1,0 +1,78 @@
+
+.section .content .box{
+	width: 300px;
+	height: 200px;
+	border: 1px solid rgba(255, 255, 255, 0.61);
+	overflow: auto;
+	color: var(--fontcolor);
+	font-size: 15px;
+	margin: 20px;
+	text-align: center;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.section .content .box:hover{
+	background-color: rgba(255, 255, 255, 0.815);
+	color: black;
+}
+
+.section .content .box::-webkit-scrollbar{
+	width: 4px;	
+}
+
+.section .content .box::-webkit-scrollbar-track{
+	background-color: black;
+}
+
+.section .content .box::-webkit-scrollbar-thumb{
+	background-color: cadetblue;
+}
+
+/* MAP */
+.mapsection{
+    width: 100%;
+}
+
+
+
+.formbox{
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    /* background-color: rgba(184, 37, 37, 0.849); */
+    background-color: inherit;
+    color: white;    
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.submitBtn{
+    margin-top: 20px;
+}
+
+.submitBtn .btn{
+    width: 60%;
+    background-color: white;
+    color: black;
+    border: none;
+    outline: none;
+    transition: 0.1s;
+}
+
+.submitBtn .btn:hover{
+    background-color: green;
+    color: white;
+}
+
+.alertcontainer{
+    width: 70%;
+}
+
+.alertbox{
+    cursor: pointer;
+}

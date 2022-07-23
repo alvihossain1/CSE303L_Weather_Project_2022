@@ -1,0 +1,21 @@
+@media only screen and (max-width: 450px){
+    .formbox{
+        width: 100%;
+        font-size: 20px;        
+    }
+
+    .alertcontainer{
+        width: 100%;       
+    }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 1280px){
+    .formbox{
+        width: 90%;
+        font-size: 25px;        
+    }
+
+    .alertcontainer{
+        width: 90%;        
+    }
+}
