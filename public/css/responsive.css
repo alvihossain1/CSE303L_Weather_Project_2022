@@ -165,18 +165,12 @@
     .footer, .footerdetails{
         margin: auto;
         padding: auto;
-        font-size: auto;
+        font-size: 15px;
         height: auto;
         width: auto;
     }
 
-	.footer .footerdetails p{
-        margin: auto;
-        padding: auto;
-        font-size: auto;
-        height: auto;
-        width: auto;
-    }
+	
 
 }
 
@@ -273,17 +267,10 @@
     .footer, .footerdetails{
         margin: auto;
         padding: auto;
-        font-size: auto;
+        font-size: 20px;
         height: auto;
         width: auto;
     }
 
-	.footer .footerdetails p{
-        margin: auto;
-        padding: auto;
-        font-size: auto;
-        height: auto;
-        width: auto;
-    }
 	
 }

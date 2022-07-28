@@ -7,6 +7,21 @@
     .alertcontainer{
         width: 100%;       
     }
+
+    .adminloginbox{
+        width: 100%;
+        margin: 0 auto;
+        border: none;
+        color: white;
+    }
+
+    .admincontentbox{
+        width: 100%;
+        padding: 5px 15px;
+        margin: 5px auto;
+        border: none;
+    }
+
 }
 
 @media only screen and (min-width: 450px) and (max-width: 1280px){
@@ -17,5 +32,19 @@
 
     .alertcontainer{
         width: 90%;        
+    }
+
+    .adminloginbox{
+        width: 90%;
+        margin: 0 auto;
+        border: none;
+        color: white;
+    }
+
+    .admincontentbox{
+        width: 90%;
+        padding: 5px 10px;
+        margin: 10px auto;
+        border: none;
     }
 }

@@ -1,15 +1,16 @@
+.section .content{
+	width: 100%;	
+}
 
 .section .content .box{
-	width: 300px;
-	height: 200px;
+	width: 90%;
+    margin: 20px auto;
+    padding: 30px;
+	min-height: 200px;
 	border: 1px solid rgba(255, 255, 255, 0.61);
 	overflow: auto;
 	color: var(--fontcolor);
 	font-size: 15px;
-	margin: 20px;
-	text-align: center;
-	cursor: pointer;
-	transition: 0.5s;
 }
 
 .section .content .box:hover{
@@ -71,8 +72,26 @@
 
 .alertcontainer{
     width: 70%;
+    margin: 0 auto;
 }
 
 .alertbox{
     cursor: pointer;
+}
+
+
+.adminloginbox{
+    width: 50%;
+    margin: 100px auto;
+    border: 1px solid grey;
+    color: white;
+    padding: 30px 40px;
+}
+
+.admincontentbox{
+    color: white;
+    width: 90%;
+    padding: 20px 40px;
+    margin: 50px auto;
+    border: 1px solid grey;
 }

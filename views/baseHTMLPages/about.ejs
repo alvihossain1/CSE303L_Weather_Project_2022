@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/headTagsAll.ejs") -%> 
+</head>
+<body>    
+    <div class="mainpage">        
+        <%- include("../partials/navbar.ejs") -%>        
+        <%- include("../partials/sidebar.ejs") -%> 
+        
+        <div class="section">
+            <div id="preloader"></div>
+
+            <!-- Content Start **Write Main Code inside Content DIV {DYNAMIC CONTEXT} -->
+            <div class="content">
+                <div id="wwo-weather-widget-3"></div><script type='text/javascript' src='https://www.worldweatheronline.com/widget/v5/weather-widget.ashx?loc=174248&wid=3&tu=1&div=wwo-weather-widget-3' async></script><noscript><a href="https://www.worldweatheronline.com/dhaka-weather/bd.aspx" alt="Hour by hour Dhaka weather">Dhaka weather forecast hourly</a></noscript>
+                <div class="box">
+                    <p><%= text %> </p>
+                </div>
+            </div>
+            <!-- Content End -->
+        </div>
+    </div>    
+
+    <div class="nextpage">
+
+    </div>
+
+    <!-- Footer -->
+    <%- include("../partials/footer.ejs") -%> 
+
+</body>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</html>
+

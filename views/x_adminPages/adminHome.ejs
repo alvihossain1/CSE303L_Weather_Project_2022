@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/headTagsAll.ejs") -%> 
+</head>
+<body>    
+    <div class="mainpage">        
+        
+        
+
+        <!-- Navbar -->
+        <nav style="display: flex; align-items: center; justify-content:center">
+            <a id="headingAnchor" href="/">
+                <div class="headingbox" style="margin-left: 0;">                
+                    <img class="logo" src="images/background_icon.jpg">
+                    <h1>Weather <span>PM</span> </h1>
+                </div>
+            </a>
+        </nav>
+        
+        <div class="section">
+
+            <!-- Content Start **Write Main Code inside Content DIV {DYNAMIC CONTEXT} -->
+            <div class="content">
+                <h1 style="color: white; text-align: center; margin: 10px 0;">WELCOME HOME ADMIN</h1> 
+                <div class="admincontentbox">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Upload CSV File</label>
+                            <input class="form-control" name="csvfile" type="file">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label"></label>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="mb-3">
+                            <p><%= locals.message || "" %> </p>
+                        </div>
+                    </form>                    
+                </div>
+                <% if(typeof uploadContent != "undefined"){ %>
+                    <div class="admincontentbox">
+                        <div class="uploads">
+                            <p><%= locals.uploadConent %></p>  
+                        </div>
+                    </div>
+                <% } %>  
+                
+                
+                 
+                
+            </div>
+            <!-- Content End -->
+        </div>
+    </div>    
+
+
+
+</body>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</html>
+
+
+

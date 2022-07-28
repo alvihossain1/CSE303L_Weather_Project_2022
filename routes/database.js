@@ -2,6 +2,10 @@ const express = require("express")
 const router = express()
 const mysql = require("mysql")
 
+// BODY PARSER -- CHECKS
+const bodyParser = require("body-parser")
+const {check, validationResult} = require("express-validator")
+const urlencodedParser = bodyParser.urlencoded({exteded: false})
 
 
 const db = mysql.createConnection({
@@ -17,9 +21,6 @@ db.connect(function(err) {
 });
 
 
-const bodyParser = require("body-parser")
-const {check, validationResult} = require("express-validator")
-const urlencodedParser = bodyParser.urlencoded({exteded: false})
 
 
 router.post("/signup", urlencodedParser, [
@@ -41,20 +42,21 @@ router.post("/signup", urlencodedParser, [
     
     if(!errors.isEmpty()){
         const alert = errors.array()
-        res.render("signup", {alert, cities})
+        res.render("baseHTMLpages/signup", {alert, cities})
     }
-    else{
+    else{        
         let user = {first_name: req.body.fname, 
-                    last_name: req.body.lname, 
-                    email: req.body.email, 
-                    contact_number: req.body.contactNo,
-                    date_Of_Birth: req.body.dob,
-                    gender: req.body.gender,
-                    address: req.body.address, 
-                    city: req.body.city,
-                    zip: req.body.zip,
-                    password: req.body.password
-                    }
+            last_name: req.body.lname, 
+            email: req.body.email, 
+            contact_number: req.body.contactNo,
+            date_Of_Birth: req.body.dob,
+            gender: req.body.gender,
+            address: req.body.address, 
+            city: req.body.city,
+            zip: req.body.zip,
+            password: req.body.password
+            }
+        
         let sql = "INSERT INTO userlist SET ?"
         db.query(sql, user, (err, result)=>{
             if(err) throw err;
@@ -70,8 +72,7 @@ router.post("/signup", urlencodedParser, [
             text: "Thank You " + req.body.fname+" "+req.body.lname+" for being with us."            
         }
 
-        res.render("signup", {reg, cities})
-
+        res.render("baseHTMLpages/signup", {reg, cities})
 
     }
    

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/headTagsAll.ejs") -%> 
+</head>
+<body>    
+    <div class="mainpage">        
+        
+        
+
+        <!-- Navbar -->
+        <nav style="display: flex; align-items: center; justify-content:center">
+            <a id="headingAnchor" href="/">
+                <div class="headingbox" style="margin-left: 0;">                
+                    <img class="logo" src="images/background_icon.jpg">
+                    <h1>Weather <span>PM</span> </h1>
+                </div>
+            </a>
+        </nav>
+        
+        <div class="section">
+
+            <!-- Content Start **Write Main Code inside Content DIV {DYNAMIC CONTEXT} -->
+            <div class="content">
+                <div class="adminloginbox">
+                    <form class="row g-5" method="post">
+                        <h1 style="margin-bottom: 50px; text-align: center;">Admin Login Panel</h1>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                            <input type="email" class="form-control" name="email" placeholder="name@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                            <input type="password" name="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-10">                                
+                                <p><%= message %> </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                    
+                
+            </div>
+            <!-- Content End -->
+        </div>
+    </div>    
+
+
+
+</body>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</html>
+
+
+
