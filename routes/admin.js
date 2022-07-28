@@ -5,6 +5,8 @@ const router = express.Router()
 const mysql = require("mysql")
 const csvtojson = require("csvtojson")
 
+const base_dirname = __dirname.replace("\\routes", "")
+
 const csv = require("csv-parser")
 const fs = require("fs")
 const results = []
@@ -135,7 +137,7 @@ function creatingTableQuery(arr, tbName){
     for(let i = 0; i < takeKeys.length; i++){
 
         takeKeys[i] = takeKeys[i].replace("Index", "index_id").replace(" ", "_").replace(" ", "_").replace("(", "").replace("(", "")
-        .replace(")", "").replace(")", "").replace(".", "").replace(".", "").replace(".", "").replace(/\d+/, "x")
+        .replace(")", "").replace(")", "").replace(".", "").replace(".", "").replace(".", "")
 
         console.log(takeKeys[i])
     }
@@ -180,8 +182,8 @@ function csvRead(req, res){
     // let csvfile = req.body.csvfile
     console.log(req.file)
     let csvPath = req.file.path
-    let dirname = "D:\\Files\\IUB Classworks\\CSE303L\\Weather Project\\CSE303L_Weather_Project_2022"
-    let actualCsvPath = dirname+"/"+csvPath
+    
+    let actualCsvPath = base_dirname+"/"+csvPath
     let results = []
     console.log(req.file.originalname.replace(".csv", "_t"))
 
