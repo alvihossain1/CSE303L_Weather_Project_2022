@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("../partials/headTagsAll.ejs") -%> 
+    <%- include("../partials/headTagsAll.ejs") -%>
 </head>
 <body>    
     <div class="mainpage">        
@@ -40,11 +40,27 @@
                 </div>
                 <% if(typeof uploadContent != "undefined"){ %>
                     <div class="admincontentbox">
-                        <div class="uploads">
-                            <p><%= locals.uploadConent %></p>  
+                        <h1 style="text-align: center;">TABLE INSERTED INTO DB</h1>
+                            <div class="table_container">
+                                <table>
+                                    <tr>
+                                        <% for(let i = 0; i < Object.keys(uploadContent[0]).length; i++){ %>
+                                            <th><%= Object.keys(uploadContent[0])[i] %></th>   
+                                        <% } %>                        
+                                    </tr>
+                                    <% for(let i = 0; i < uploadContent.length; i++){ %>
+                                        <tr>
+                                            <% for(let j = 0; j < Object.values(uploadContent[i]).length; j++){ %>
+                                                <td><p><%= Object.values(uploadContent[i])[j] %></p></td>
+                                            <% } %>  
+                                        </tr>
+                                    <% } %>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                <% } %>  
+                <% } %> 
+
                 
                 
                  

@@ -88,6 +88,11 @@
     padding: 30px 40px;
 }
 
+
+.table_container{
+    overflow: scroll;
+}
+
 .admincontentbox{
     color: white;
     width: 90%;
@@ -95,3 +100,27 @@
     margin: 50px auto;
     border: 1px solid grey;
 }
+
+.table_container table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table_container td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.table_container th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.table_container tr:nth-child(even) {
+    background-color: #3f3f3f;
+}
+
+

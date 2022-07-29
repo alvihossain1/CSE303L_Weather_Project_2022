@@ -96,19 +96,28 @@ function loginVerify(req, res, next){
 
 // INSERTING DATA INTO SQL
 function instertingDataSQL(createTableQuery, insertIntoQuery){
-    db.query(createTableQuery, (err, result)=>{
-        if(err) throw err;
-        console.log(result) 
-    })
-    
-    for(let i = 0; i < insertIntoQuery.length; i++){
-        db.query(insertIntoQuery[i], (err, result)=>{
+    try{
+        db.query(createTableQuery, (err, result)=>{
             if(err) throw err;
             console.log(result) 
         })
     }
-   
-
+    catch(err){
+        res.send(err)
+    }
+    
+    try{
+        for(let i = 0; i < insertIntoQuery.length; i++){
+            db.query(insertIntoQuery[i], (err, result)=>{
+                if(err) throw err;
+                console.log(result) 
+            })
+        }
+    }
+    catch(err){
+        res.send(err)
+    }
+    
 }
 
 
@@ -177,6 +186,8 @@ function creatingTableQuery(arr, tbName){
 }
 
 
+
+
 // CSV READS
 function csvRead(req, res){
     // let csvfile = req.body.csvfile
@@ -202,7 +213,7 @@ function csvRead(req, res){
 
             // console.log(takeKeys)
 
-            let uploadContent = JSON.stringify(jsonFile)
+            let uploadContent = jsonFile
 
             let tbname = req.file.originalname.replace(".csv", "_t").replace(" ", "_").replace(" ", "_").replace(" ", "_").replace(" ", "_")
                         .replace(" ", "_").replace(" ", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_")
@@ -216,6 +227,8 @@ function csvRead(req, res){
     
     
 }
+
+
 
 
 
