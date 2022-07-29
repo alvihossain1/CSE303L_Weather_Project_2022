@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/headTagsAll.ejs") -%>
+</head>
+<body>    
+    <div class="mainpage">        
+        
+        
+
+        <!-- Navbar -->
+        <nav style="display: flex; align-items: center; justify-content:center">
+            <a id="headingAnchor" href="/">
+                <div class="headingbox" style="margin-left: 0;">                
+                    <img class="logo" src="images/background_icon.jpg">
+                    <h1>Weather <span>PM</span> </h1>
+                </div>
+            </a>
+        </nav>
+        
+        <div class="section">
+
+            <!-- Content Start **Write Main Code inside Content DIV {DYNAMIC CONTEXT} -->
+            <div class="content">
+                <h1 style="color: white; text-align: center; margin: 10px 0;">TABLE VIEW CONTENTS</h1> 
+                <% if(typeof uploadContent != "undefined"){ %>
+                    <div class="admincontentbox">
+                        <h1 style="text-align: center;"><%= locals.tbname %> </h1>
+                            <div class="table_container">
+                                <table>
+                                    <tr>
+                                        <% for(let i = 0; i < Object.keys(uploadContent[0]).length; i++){ %>
+                                            <th><%= Object.keys(uploadContent[0])[i] %></th>   
+                                        <% } %>                        
+                                    </tr>
+                                    <% for(let i = 0; i < uploadContent.length; i++){ %>
+                                        <tr>
+                                            <% for(let j = 0; j < Object.values(uploadContent[i]).length; j++){ %>
+                                                <td><p><%= Object.values(uploadContent[i])[j] %></p></td>
+                                            <% } %>  
+                                        </tr>
+                                    <% } %>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                <% } %> 
+
+                
+                
+                 
+                
+            </div>
+            <!-- Content End -->
+        </div>
+    </div>    
+
+
+
+</body>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</html>
+
+
+

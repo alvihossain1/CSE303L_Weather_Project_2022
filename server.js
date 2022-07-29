@@ -7,6 +7,7 @@ const multer = require("multer")
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
+app.use("/admin", express.static(__dirname + "/public"))
 
 
 // DATABASE CONNECTION

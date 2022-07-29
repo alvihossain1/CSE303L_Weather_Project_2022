@@ -95,34 +95,30 @@ function loginVerify(req, res, next){
 
 
 // INSERTING DATA INTO SQL
-function instertingDataSQL(createTableQuery, insertIntoQuery){
-    try{
-        db.query(createTableQuery, (err, result)=>{
+function instertingDataSQL(createTableQuery, insertIntoQuery, res){
+    
+    db.query(createTableQuery, (err, result)=>{
+        try{
             if(err) throw err;
-            console.log(result) 
+            console.log(result)
+        }
+        catch(err){
+            res.send(err.sqlMessage)
+        }        
+    })
+        
+    for(let i = 0; i < insertIntoQuery.length; i++){
+        db.query(insertIntoQuery[i], (err, result)=>{            
+            if(err) throw err;
+            console.log(result)             
         })
     }
-    catch(err){
-        res.send(err)
-    }
-    
-    try{
-        for(let i = 0; i < insertIntoQuery.length; i++){
-            db.query(insertIntoQuery[i], (err, result)=>{
-                if(err) throw err;
-                console.log(result) 
-            })
-        }
-    }
-    catch(err){
-        res.send(err)
-    }
-    
+   
 }
 
 
 // CREATING TABLE AND INSERTING DATA SQL QUERY LINES --- DOESN'T INSERT DATA YET***
-function creatingTableQuery(arr, tbName){
+function creatingTableQuery(arr, tbName, res){
 
     if(tbName === ""){
         return "Table Name is Empty"
@@ -131,17 +127,15 @@ function creatingTableQuery(arr, tbName){
     let createTable = ""
     let insertInto = []
     
-    
-    // let tbIdLimit = (arr.length)*1000
-    // console.log(tbIdLimit)
-    let limit = 255
+    let varcharSize = 255
+    let tableIdPK = "Table_ID_PK"
     let takeKeys = Object.keys(arr[0])     
 
-    let insertionKeys = `tableid BIGINT AUTO_INCREMENT, `
+    let insertionKeys = `${tableIdPK} BIGINT AUTO_INCREMENT, `
     let keys = ""
     let values = ""
 
-    let takeValues = Object.values(arr[0])
+    let takeValues = []
 
     for(let i = 0; i < takeKeys.length; i++){
 
@@ -152,10 +146,10 @@ function creatingTableQuery(arr, tbName){
     }
 
     for(i = 0; i < takeKeys.length-1; i++){
-        insertionKeys += `${takeKeys[i]} VARCHAR(${limit}), `
+        insertionKeys += `${takeKeys[i]} VARCHAR(${varcharSize}), `
     }
-    insertionKeys += `${takeKeys[i]} VARCHAR(${limit})`
-    createTable = `CREATE TABLE ${tablename}(${insertionKeys}, CONSTRAINT tableid_PK PRIMARY KEY (tableid));`
+    insertionKeys += `${takeKeys[i]} VARCHAR(${varcharSize})`
+    createTable = `CREATE TABLE ${tablename}(${insertionKeys}, CONSTRAINT ${tableIdPK}_PK PRIMARY KEY (${tableIdPK}));`
     
 
     for(let i=0; i < arr.length; i++){
@@ -180,11 +174,10 @@ function creatingTableQuery(arr, tbName){
     for(let i = 0; i < insertInto.length; i++){
         console.log(insertInto[i])
     }
-    instertingDataSQL(createTable, insertInto)
+    instertingDataSQL(createTable, insertInto, res)
 
     return "Successfully Created SQLQuery Lines For Creating Table And Insertion"
 }
-
 
 
 
@@ -204,31 +197,53 @@ function csvRead(req, res){
     .on("end", ()=>{
         // console.log(results)
         csvtojson().fromFile(actualCsvPath).then((jsonFile)=>{
-            // console.log(jsonFile)
-            // let takeKeys = Object.keys(jsonFile[0])
-            // for(let i = 0; i < takeKeys.length; i++){
-            //     takeKeys[i] = takeKeys[i].replace("Index", "index_id").replace(" ", "_").replace(" ", "_").replace("(", "").replace("(", "").replace(")", "").replace(")", "")
-            //     console.log(takeKeys[i])
-            // }
-
-            // console.log(takeKeys)
-
-            let uploadContent = jsonFile
 
             let tbname = req.file.originalname.replace(".csv", "_t").replace(" ", "_").replace(" ", "_").replace(" ", "_").replace(" ", "_")
                         .replace(" ", "_").replace(" ", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_")
 
-            let msg = creatingTableQuery(jsonFile, tbname)
+            let msg = creatingTableQuery(jsonFile, tbname, res)
             console.log(msg)
-            res.render("x_adminPages/adminHome.ejs", {message : "File Uploaded", uploadContent})
+
+            showTable(tbname, res)
         })
-        // res.render("x_adminPages/adminHome.ejs", {message : "File Uploaded", uploadContent})
+
     })   
-    
+  
+}
+
+function showTable(tbname, res){
+    let sql = `SELECT * FROM ${tbname}`    
+        db.query(sql, (err, result)=>{
+            try{
+                if(err) throw err;
+                console.log(result)
+                let uploadContent = result
+                res.render("x_adminPages/adminHome.ejs", {message : "Upload a CSV File", uploadContent})
+            }
+            catch(err){
+                res.send(err)
+            }                
+        })   
     
 }
 
-
+router.get("/:name", (req, res)=>{
+    let tbname = req.params.name
+    let sql = `SELECT * FROM ${tbname}`
+    
+        db.query(sql, (err, result)=>{
+            try{
+                if(err) throw err;
+                console.log(result)
+                let uploadContent = result
+                res.render("x_adminPages/tableView.ejs", {message : "Upload a CSV File", uploadContent, tbname})
+            }
+            catch(err){
+                res.send(err.sqlMessage)
+            }
+        })  
+    
+})
 
 
 
