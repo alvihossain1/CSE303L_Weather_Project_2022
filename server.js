@@ -50,7 +50,8 @@ const fileStorageEngine = multer.diskStorage({
         }
     },
     filename: (req, file, cb) => {
-        cb(null, currentDate + "--" + file.originalname)
+        cb(null, file.originalname.replace(" ", "_").replace(" ", "_").replace(" ", "_").replace(" ", "_")
+        .replace(" ", "_").replace(" ", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_"))
     }, 
 })
 

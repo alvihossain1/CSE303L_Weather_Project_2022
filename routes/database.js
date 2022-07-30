@@ -5,6 +5,7 @@ const mysql = require("mysql")
 // BODY PARSER -- CHECKS
 const bodyParser = require("body-parser")
 const {check, validationResult} = require("express-validator")
+const { json } = require("body-parser")
 const urlencodedParser = bodyParser.urlencoded({exteded: false})
 
 
@@ -23,6 +24,27 @@ db.connect(function(err) {
 
 
 
+// SEARCH PAGE
+router.get("/search", (req, res)=>{ 
+    console.log(req.query.searchtable)
+    let tbname = req.query.searchtable
+    let sql = `SELECT * FROM ${tbname}`
+    
+    db.query(sql, (err, result)=>{
+        try{
+            if(err) throw err;
+            console.log(result)
+            let uploadContent = result
+            res.render("x_adminPages/tableView.ejs", {message : "Upload a CSV File", uploadContent, tbname})
+        }
+        catch(err){
+            res.send(err.sqlMessage)
+        }
+    }) 
+})
+
+
+// SIGN UP ROUTE
 router.post("/signup", urlencodedParser, [
     check("fname", "Please Enter First Name").exists().isLength({min: 2}),
     check("lname", "Please Enter Last Name").exists().isLength({min: 2}),
@@ -57,12 +79,17 @@ router.post("/signup", urlencodedParser, [
             password: req.body.password
             }
         
-        let sql = "INSERT INTO userlist SET ?"
+       
+
+        let = sql = "INSERT INTO User_t SET ?"
         db.query(sql, user, (err, result)=>{
-            if(err) throw err;
-            console.log(result)
-            
-        
+            try{
+                if(err) throw err;
+                console.log(result)
+            }
+            catch(err){
+                res.send(err)
+            }
         })
 
         let cities = ["Dhaka", "Chittagong", "Khulna", "Sylhet", "Rajshahi", "Mymensingh", "Barisal", "Rangpur", "Comilla", "Narayanganj", "Gazipur"]

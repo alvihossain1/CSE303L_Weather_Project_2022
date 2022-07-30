@@ -9,6 +9,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		padding: 0;
+	}
+
+	.smallnavlogo li a{
+		color: white;
+		padding: 10px 20px;
+		font-size: 20px;
 	}
 
 	.headingbox{
@@ -170,9 +177,14 @@
         width: auto;
     }
 
+	.dropdown_content{
+		left: 0;
+		right: 0;
+	}
 	
 
 }
+
 
 @media only screen and (min-width: 450px) and (max-width: 1280px){
 	.navbarlist{
@@ -271,6 +283,13 @@
         height: auto;
         width: auto;
     }
+
+	.dropdown_content{
+		width: 80%;
+		margin: auto auto;
+		left: 0;
+		right: 0;
+	}
 
 	
 }

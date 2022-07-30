@@ -1,6 +1,5 @@
 <!-- Navbar -->
 <nav>
-
     <a id="headingAnchor" href="/">
         <div class="headingbox">                
             <img class="logo" src="images/background_icon.jpg">
@@ -12,11 +11,15 @@
         <li><a href="report"></i>Report</a></li>
         <li><a href="maps"></i>Maps</a></li>
         <li><a href="signup">Sign Up</a></li>
-        <li><a href="about">About</a></li> 
+        <li><a href="about">About</a></li>
+        <%- include("./searchbox") -%>
     </ul>
-
+    
     <div class="menubar"><i class="fa-solid fa-bars"></i></div>
+    
 </nav>
+
+
 
 <div>
     <ul class="smallnavlogo">
@@ -24,7 +27,8 @@
         <li><a href="report"><i class="fa-solid fa-flag"></i></a></li>
         <li><a href="maps"><i class="fa-solid fa-location-dot"></i></a></li>
         <li><a href="signup"><i class="fa-solid fa-user-plus"></i></a></li>
-        <li><a href="about"><i class="fa-solid fa-circle-info"></i></a></li> 
+        <li><a href="about"><i class="fa-solid fa-circle-info"></i></a></li>
+        <%- include("./searchbox") -%>
     </ul>
 </div>
 

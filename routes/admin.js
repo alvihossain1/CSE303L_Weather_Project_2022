@@ -199,7 +199,7 @@ function csvRead(req, res){
         csvtojson().fromFile(actualCsvPath).then((jsonFile)=>{
 
             let tbname = req.file.originalname.replace(".csv", "_t").replace(" ", "_").replace(" ", "_").replace(" ", "_").replace(" ", "_")
-                        .replace(" ", "_").replace(" ", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_")
+            .replace(" ", "_").replace(" ", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_").replace("-", "_")
 
             let msg = creatingTableQuery(jsonFile, tbname, res)
             console.log(msg)
@@ -227,7 +227,7 @@ function showTable(tbname, res){
     
 }
 
-router.get("/:name", (req, res)=>{
+router.get("/show-:name", (req, res)=>{
     let tbname = req.params.name
     let sql = `SELECT * FROM ${tbname}`
     
