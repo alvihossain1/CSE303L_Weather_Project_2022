@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express()
 const mysql = require("mysql")
+const path  = require("path")
 
 // BODY PARSER -- CHECKS
 const bodyParser = require("body-parser")
@@ -13,7 +14,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "WeatherDB"
+    database: "weatherdb"
 })
 
 db.connect(function(err) {
@@ -24,10 +25,17 @@ db.connect(function(err) {
 
 
 
+
 // SEARCH PAGE
 router.get("/search", (req, res)=>{ 
     console.log(req.query.searchtable)
     let tbname = req.query.searchtable
+    
+    if(tbname == ""){
+        res.render("baseHTMLpages/index.ejs")
+        return
+    } 
+
     let sql = `SELECT * FROM ${tbname}`
     
     db.query(sql, (err, result)=>{

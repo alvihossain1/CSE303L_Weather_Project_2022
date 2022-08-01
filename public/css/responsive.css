@@ -5,6 +5,17 @@
 		display: none;
 	}
 
+	nav{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.headingbox{
+		margin-left: 0;
+		font-size: 15px;
+	}
+
 	.smallnavlogo{
 		display: flex;
 		align-items: center;
@@ -29,128 +40,18 @@
 		font-size: 20px;
 	}
 
-	.sidebarlist li a{
+
+	footer{
 		font-size: 15px;
 	}
 
-	footer .footerdetails{
-		font-size: 15px;
-	}
-
-	.sidebar .navlistshrink{
-		width: 90%;
-		margin: 5px auto;
-		border-top: 1px solid rgba(255, 255, 255, 0.685);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.685);
-		padding: 2px 0;
+	
+	.dropdown_content{
+		left: 0;
+		right: 0;
 	}
 	
-	.sidebar .navlistshrinkheading{
-		font-size: 20px;
-		font-weight: bold;
-		color: var(--fontcolor);
-		text-align: center;
-		margin: 10px 0;
-	}
-	
-	.sidebar .navlistshrink .navbarlist{
-		display: block;
-	}
-	
-	.sidebar .navlistshrink .navbarlist li{
-		margin: 0;		
-	}
-	
-	.sidebar .navlistshrink .navbarlist li a{
-		border: none;
-		display: block;
-		font-size: 15px;
-		margin: 0;
-		padding: 5px 20px;
-	}
-
-	
-	
-    /* AUTO RESPONSIVE */
-
-    /* .navbarlist{
-		display: none;
-	}
-
-	.heading{
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	}
-
-	.menubar{
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	}
-
-	.sidebarlist li a{
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	}
-
-	footer .footerdetails{
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	}
-
-	.sidebar .navlistshrink{
-		border-top: 1px solid rgba(255, 255, 255, 0.685);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.685);
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	}
-	
-	.sidebar .navlistshrinkheading{
-		font-weight: bold;
-		color: var(--fontcolor);
-		text-align: center;
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	}
-	
-	.sidebar .navlistshrink .navbarlist{
-		display: block;
-	}
-	
-	.sidebar .navlistshrink .navbarlist li{
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;	
-	}
-	
-	.sidebar .navlistshrink .navbarlist li a{
-		border: none;
-		display: block;
-		margin: auto;
-        padding: auto;
-        height: auto;
-        width: auto;
-		font-size: auto;
-	} */
+    
 
 	/* AUTO RESPONSIVE */
 
@@ -169,20 +70,6 @@
         width: auto;
     }
 
-    .footer, .footerdetails{
-        margin: auto;
-        padding: auto;
-        font-size: 15px;
-        height: auto;
-        width: auto;
-    }
-
-	.dropdown_content{
-		left: 0;
-		right: 0;
-	}
-	
-
 }
 
 
@@ -191,8 +78,15 @@
 		display: none;
 	}
 
+	nav{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+
 	.headingbox{
-		margin-left: 50px;
+		margin-left: 0;
 		font-size: 20px;
 	}
 
@@ -208,57 +102,17 @@
 		font-size: 20px;
 	}
 
-
-	.menubar{
-		margin-left: auto;
-		margin-right: 50px;
-		font-size: 30px;
-	}
-
-	.sidebarlist li a{
+	footer{
 		font-size: 20px;
 	}
 
-	footer .footerdetails{
-		font-size: 20px;
-	}
-
-	/* Repeat */
-
-	.sidebar .navlistshrink{
-		width: 90%;
-		margin: 5px auto;
-		border-top: 1px solid rgba(255, 255, 255, 0.685);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.685);
-		padding: 2px 0;
+	.dropdown_content{
+		width: 80%;
+		margin: auto auto;
+		left: 0;
+		right: 0;
 	}
 	
-	.sidebar .navlistshrinkheading{
-		font-size: 30px;
-		font-weight: bold;
-		color: var(--fontcolor);
-		text-align: center;
-		margin: 10px 0;
-	}
-	
-	.sidebar .navlistshrink .navbarlist{
-		display: block;
-	}
-	
-	.sidebar .navlistshrink .navbarlist li{
-		margin: 0;
-	}
-	
-	.sidebar .navlistshrink .navbarlist li a{
-		border: none;
-		display: block;
-		font-size: 20px;
-		margin: 0;
-		padding: 10px 20px;
-	}
-	/* Repeat Ends */
-
-
     /* AUTO RESPONSIVE */
 
     .section{
@@ -276,20 +130,5 @@
         width: auto;
     }
 
-    .footer, .footerdetails{
-        margin: auto;
-        padding: auto;
-        font-size: 20px;
-        height: auto;
-        width: auto;
-    }
 
-	.dropdown_content{
-		width: 80%;
-		margin: auto auto;
-		left: 0;
-		right: 0;
-	}
-
-	
 }

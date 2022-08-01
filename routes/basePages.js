@@ -1,6 +1,14 @@
 const express = require("express")
 const router = express()
 const fs = require("fs")
+const { dirname } = require("path")
+const path = require("path")
+
+// var pathObj = path.parse(__filename)
+// console.log(pathObj)
+// console.log(path.basename(__dirname))
+// console.log(path.dirname(""))
+
 
 
 router.get("/", (req, res) => {

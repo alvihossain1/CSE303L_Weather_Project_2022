@@ -4,8 +4,12 @@ const express = require("express")
 const router = express.Router()
 const mysql = require("mysql")
 const csvtojson = require("csvtojson")
+const path = require("path")
 
-const base_dirname = __dirname.replace("\\routes", "")
+const project_dirname = path.parse(__dirname).dir
+// const project_dirname = __dirname.replace("\\routes", "")
+// console.log(path.parse(path.join(project_dirname, "All_uploads", "csv", "final_trail_data.csv")).name+"_t") //Parse Table Name of a CSV FILE
+// console.log(path.parse(path.join(project_dirname, "All_uploads", "csv", "final_trail_data.csv")))
 
 const csv = require("csv-parser")
 const fs = require("fs")
@@ -21,7 +25,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "WeatherDB"
+    database: "weatherdb"
 })
 
 db.connect(function(err) {
@@ -56,6 +60,8 @@ router.get("/", (req, res)=>{
     res.render("x_adminPages/adminLogin.ejs", {message})
 })
 
+
+
 // POST === HANDLING ALL POST REQUESTS BY CHECKS = Which checks the params
 router.post("/", (req, res, next)=>{
     let checkParams = Object.keys(req.body)
@@ -74,9 +80,8 @@ router.post("/", (req, res, next)=>{
         }
     }
     
-    
-
 })
+
 
 // LOGIN VERIFICATION
 function loginVerify(req, res, next){
@@ -92,6 +97,7 @@ function loginVerify(req, res, next){
         res.render("x_adminPages/adminLogin.ejs", {message})
     }
 }
+
 
 
 // INSERTING DATA INTO SQL
@@ -117,17 +123,17 @@ function instertingDataSQL(createTableQuery, insertIntoQuery, res){
 }
 
 
-// CREATING TABLE AND INSERTING DATA SQL QUERY LINES --- DOESN'T INSERT DATA YET***
-function creatingTableQuery(arr, tbName, res){
 
-    if(tbName === ""){
+// CREATING TABLE AND INSERTING DATA SQL QUERY LINES --- DOESN'T INSERT DATA YET***
+function creatingTableQuery(arr, tbname, res){
+
+    if(tbname === ""){
         return "Table Name is Empty"
     }
-    let tablename = tbName
-    let createTable = ""
-    let insertInto = []
     
-    let varcharSize = 255
+    let tablename = tbname
+    let createTable = ""
+    let varcharSize = 30
     let tableIdPK = "Table_ID_PK"
     let takeKeys = Object.keys(arr[0])     
 
@@ -135,6 +141,7 @@ function creatingTableQuery(arr, tbName, res){
     let keys = ""
     let values = ""
 
+    let insertInto = []
     let takeValues = []
 
     for(let i = 0; i < takeKeys.length; i++){
@@ -181,13 +188,14 @@ function creatingTableQuery(arr, tbName, res){
 
 
 
+
 // CSV READS
 function csvRead(req, res){
     // let csvfile = req.body.csvfile
     console.log(req.file)
     let csvPath = req.file.path
     
-    let actualCsvPath = base_dirname+"/"+csvPath
+    let actualCsvPath = project_dirname+"/"+csvPath
     let results = []
     console.log(req.file.originalname.replace(".csv", "_t"))
 
@@ -211,6 +219,7 @@ function csvRead(req, res){
   
 }
 
+
 function showTable(tbname, res){
     let sql = `SELECT * FROM ${tbname}`    
         db.query(sql, (err, result)=>{
@@ -226,6 +235,8 @@ function showTable(tbname, res){
         })   
     
 }
+
+
 
 router.get("/show-:name", (req, res)=>{
     let tbname = req.params.name
@@ -247,20 +258,27 @@ router.get("/show-:name", (req, res)=>{
 
 
 
+
 // CREATING DATABASE weatherdb
-router.get("/createDB", loginVerify, (req, res)=>{
-    // let sql = "CREATE DATABASE weatherdb"
+router.get("/showtable-:tbname", (req, res)=>{
+    // let sql = `SHOW TABLES LIKE "${req.params.dbname}"`
     // db.query(sql, (err, result)=>{
     //     if(err) throw err;
     //     console.log(result)
-    //     res.send("Hello Admin, Database has been Created")         
+    //     res.send(result)         
     // })
-    res.send("Hello Admin, Database has been Created")
+    // if(checkIfTableExists(req.params.tbname, res)){
+    //     res.send("<h1>YES TABLE EXISTS BABY</h1>")
+    // }
+    // else{
+    //     res.send("<h1>NOO!!</h1>")
+    // }
+    // res.send("Hello Admin, Database has been Created")
 })
 
 // CREATING TABLE userlist
 router.get("/CT_userlist", (req, res)=>{
-    let sql = "CREATE TABLE userlist(id int AUTO_INCREMENT, first_name VARCHAR(100), last_name VARCHAR(100), email VARCHAR(100), contact_number VARCHAR(50), gender CHAR(10), date_Of_Birth DATE, address TEXT(255), city VARCHAR(30), zip int, password VARCHAR(100), PRIMARY KEY (id));"
+    let sql = "CREATE TABLE User_t(id int AUTO_INCREMENT, first_name VARCHAR(100), last_name VARCHAR(100), email VARCHAR(100), contact_number VARCHAR(50), gender CHAR(10), date_Of_Birth DATE, address TEXT(255), city VARCHAR(30), zip int, password VARCHAR(100), PRIMARY KEY (id));"
     db.query(sql, (err, result)=>{
         if(err) throw err;
         console.log(result)

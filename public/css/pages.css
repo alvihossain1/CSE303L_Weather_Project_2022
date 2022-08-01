@@ -32,7 +32,8 @@
 
 /* MAP */
 .mapsection{
-    width: 100%;
+    width: 80%;
+    margin: 10px auto;
 }
 
 
@@ -90,7 +91,9 @@
 
 
 .table_container{
-    overflow: scroll;
+    min-height: 80vh;
+    max-height: 150vh;
+    overflow: hidden;
 }
 
 .admincontentbox{

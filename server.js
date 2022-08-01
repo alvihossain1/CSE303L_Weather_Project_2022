@@ -3,11 +3,12 @@ const app = express()
 const port = 3000
 const mysql = require("mysql")
 const multer = require("multer")
-
+const path = require("path")
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use("/admin", express.static(__dirname + "/public"))
+
 
 
 // DATABASE CONNECTION
@@ -15,7 +16,7 @@ app.use("/admin", express.static(__dirname + "/public"))
 //     host: "localhost",
 //     user: "root",
 //     password: "",
-//     database: "WeatherDB"
+//     database: "weatherdb"
 // })
 
 // db.connect(function(err) {
