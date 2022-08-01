@@ -29,9 +29,9 @@ router.get("/signup", (req, res) => {
     res.render("baseHTMLpages/signup.ejs", {cities})
 })
 
-router.get("/report", (req, res) => {
-    let report = "This is my report please take good care of it! How is the report baby?"    
-    res.render("baseHTMLpages/report.ejs", {report})
+router.get("/graphs", (req, res) => {
+    let report = "This is the graph section"    
+    res.render("baseHTMLpages/graphs.ejs", {report})
 })
 
 
